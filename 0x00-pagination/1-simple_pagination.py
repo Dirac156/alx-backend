@@ -48,7 +48,7 @@ class Server:
 
         list_result = []
 
-        if len(csv_file) < end:
+        if start >= len(self.dataset()):
             return list_result
 
         return csv_file[start:end]
