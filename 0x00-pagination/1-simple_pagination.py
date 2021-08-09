@@ -5,7 +5,6 @@
 import csv
 import math
 from typing import List
-index_range = __import__('0-simple_helper_function').index_range
 
 
 class Server:
@@ -27,6 +26,15 @@ class Server:
 
         return self.__dataset
 
+    def index_range(self, page: int, page_size: int) -> tuple:
+        """ create a tuple containing page and the page_size """
+        # index start at 0
+        # take the first page and remvove -1 and multiple by page size
+        # to get the initial index
+        start_index = (page - 1) * page_size
+        end_index = start_index + page_size
+        return (start_index, end_index)
+
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """ get items in a page """
         assert type(page) == int
@@ -34,7 +42,7 @@ class Server:
         assert type(page_size) == int
         assert page_size > 0
 
-        index_tuple = index_range(page, page_size)
+        index_tuple = self.index_range(page, page_size)
         start = index_tuple[0]
 
         csv_file = self.dataset()
