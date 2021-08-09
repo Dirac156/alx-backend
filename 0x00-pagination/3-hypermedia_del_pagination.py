@@ -45,6 +45,7 @@ class Server:
         next = index + page_size
         for idx in range(index, index + page_size):
             if not self.indexed_dataset().get(idx):
+                idx += 1
                 next += 1
             requested_data.append(self.indexed_dataset()[i])
         result = {
