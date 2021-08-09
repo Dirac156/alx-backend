@@ -42,18 +42,13 @@ class Server:
         assert type(page_size) == int
         assert page_size > 0
 
-        index_tuple = self.index_range(page, page_size)
-        start = index_tuple[0]
+        start, end = self.index_range(page, page_size)
 
         csv_file = self.dataset()
 
         list_result = []
 
-        if len(csv_file) < index_tuple[1]:
+        if len(csv_file) < end:
             return list_result
 
-        while start != index_tuple[1]:
-            list_result.append(csv_file[start])
-            start += 1
-
-        return list_result
+        return csv_file[start:end]
