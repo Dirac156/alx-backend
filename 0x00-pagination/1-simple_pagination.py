@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" """
+""" implemented a Server class to work with data """
 
 
 import csv
