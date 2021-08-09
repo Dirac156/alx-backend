@@ -29,10 +29,12 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """ get items in a page """
-        assert page > 0 and type(page) == int
-        assert page_size > 0 and type(page_size) == int
+        assert type(page) == int
+        assert page > 0
+        assert type(page_size) == int
+        assert page_size > 0
 
-        index_tuple = index_range(page = page, page_size = page_size)
+        index_tuple = index_range(page, page_size)
         start = index_tuple[0]
 
         csv_file = self.dataset()
