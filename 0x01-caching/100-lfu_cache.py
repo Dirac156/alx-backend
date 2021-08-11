@@ -25,10 +25,10 @@ class LFUCache(BaseCaching):
         if key and item:
             if len(self.cache_data) < self.MAX_ITEMS:
                 self.cache_data[key] = item
-                self.queue.append({ key: 0 })
+                self.queue.append({key: 0})
             else:
-                self.queue.sort(reverse = True, 
-                                key = self.getDictionaryValue)
+                self.queue.sort(reverse=True,
+                                key=self.getDictionaryValue)
                 popped = self.queue.pop()
                 dict_key = list(popped.keys())[0]
                 del self.cache_data[dict_key]
@@ -41,7 +41,7 @@ class LFUCache(BaseCaching):
             for items in self.queue:
                 key_it = list(items.keys())
                 if key_it[0] == key:
-                    newElement = { key: items[key_it[0]] + 1}
+                    newElement = {key: items[key_it[0]] + 1}
                     self.queue[i] = newElement
                 i += 1
             return self.cache_data.get(key, None)
