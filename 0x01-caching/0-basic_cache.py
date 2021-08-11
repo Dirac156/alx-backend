@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """ basic caching """
-BaseCaching  = __import__('BaseCaching').BaseCaching 
+BaseCaching = __import__('BaseCaching').BaseCaching
 
 
 class BasicCache(BaseCaching):
     """
-    Basic cache is a class that perform 
+    Basic cache is a class that perform
     basic caching data operation
     """
 
